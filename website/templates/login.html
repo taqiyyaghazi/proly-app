@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% block title %}Login{% endblock %} {% block content
+%}
+<br />
+
+<div class="container">
+  <div class="row pt-5">
+    <div class="col-md-6 d-flex hide">
+      <div class="container-headline d-flex align-items-center mx-auto">
+        <div class="headline">
+          <h1 class="fw-bolder">
+            <span class="text-secondary">We</span>
+            <span class="text-neutral">Make</span>
+          </h1>
+          <h1 class="fw-bolder">
+            <span class="text-secondary">The Better</span>
+            <span class="text-tertiary">Analysis</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex">
+      <div class="container">
+        <div class="container-form">
+          <div class="box-form">
+            <form method="POST">
+              <h3 align="center" class="fw-bolder">Login</h3>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Enter Email"
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Enter Password"
+                />
+              </div>
+              <br />
+              <button type="submit" class="btn mx-auto">Login</button>
+              <br />
+              <br />
+              <p class="text-center">
+                Already have an account? <a href="/sign-up">Sign up</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

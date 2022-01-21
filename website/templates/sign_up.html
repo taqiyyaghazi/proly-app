@@ -1,0 +1,85 @@
+{% extends 'base.html' %} {% block title %}Sign Up{% endblock %} {% block
+content %}
+<br />
+
+<div class="container">
+  <div class="row pt-3">
+    <div class="col-md-6 d-flex hide">
+      <div class="container-headline d-flex align-items-center mx-auto">
+        <div class="headline">
+          <h1 class="fw-bolder">
+            <span class="text-secondary">We</span>
+            <span class="text-neutral">Make</span>
+          </h1>
+          <h1 class="fw-bolder">
+            <span class="text-secondary">The Better</span>
+            <span class="text-tertiary">Analysis</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 d-flex">
+      <div class="container">
+        <div class="container-form">
+          <div class="box-form">
+            <form method="POST">
+              <h3 align="center" class="fw-bolder">Sign Up</h3>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Enter Email"
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Enter First Name"
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="password1">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password1"
+                  name="password1"
+                  placeholder="Enter Password"
+                />
+              </div>
+              <br />
+              <div class="form-group">
+                <label for="password2">Password (Confirm)</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password2"
+                  name="password2"
+                  placeholder="Enter Password Confirm"
+                />
+              </div>
+              <br />
+              <button type="submit" class="btn">SIGN UP</button>
+              <br />
+              <br />
+              <p class="text-center">
+                Need an account? <a href="/login">Login</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
