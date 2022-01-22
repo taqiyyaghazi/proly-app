@@ -15,6 +15,10 @@ def home():
 
 @views.route('analysis', methods=['GET', 'POST'])
 def analysis():
+    data = []
+    for i in request.form.values():
+        data.append(i)
+    print(data)
     return render_template('analysis.html', user=current_user) 
 
 @views.route('analysis-member', methods=['GET', 'POST'])

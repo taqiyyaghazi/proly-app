@@ -1,6 +1,108 @@
 {% extends 'base.html' %} {% block title %}Analysis{% endblock %} {% block
 content %}
 
-<h1>INI HALAMAN ANALYSIS BIASA</h1>
+<div class="container-fluid">
+  <div class="headline jumbotron text-center">
+    <h1 class="fw-bolder">
+      <span class="text-secondary">We</span>
+      <span class="text-neutral">Make</span>
+    </h1>
+    <h1 class="fw-bolder">
+      <span class="text-secondary">The Better</span>
+      <span class="text-tertiary">Analysis</span>
+    </h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box-analysis">
+        <form method="post">
+          <div class="form-group">
+            <label for="url">Product URL</label>
+            <input
+              type="text"
+              class="form-control"
+              name="url"
+              placeholder="Masukkan URL Produkmu"
+              required="required"
+            />
+          </div>
+
+          <br />
+          <div class="form-group">
+            <label for="category">Product Category</label>
+
+            <div class="pilihan">
+              <div>
+                <label for="elektronik">
+                  <input
+                    type="radio"
+                    name="category"
+                    id="elektronik"
+                    value="elektronik"
+                    required
+                  />Electronic</label
+                >
+              </div>
+              <div>
+                <label for="pakaian">
+                  <input
+                    type="radio"
+                    name="category"
+                    id="pakaian"
+                    value="pakaian"
+                  />Fashion</label
+                >
+              </div>
+              <div>
+                <label for="makanan">
+                  <input
+                    type="radio"
+                    name="category"
+                    id="makanan"
+                    value="makanan"
+                  />Food</label
+                >
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="ecommerce">Product Ecommerce</label>
+            <div class="pilihan-ecom">
+              <div>
+                <label for="shopee"
+                  ><input
+                    type="radio"
+                    name="ecommerce"
+                    id="shopee"
+                    value="shopee"
+                    required
+                  />Shopee</label
+                >
+              </div>
+              <div>
+                <label for="tokopedia">
+                  <input
+                    type="radio"
+                    name="ecommerce"
+                    id="tokopedia"
+                    value="tokopedia"
+                  />Tokopedia</label
+                >
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-submit">
+            Analisis Sekarang
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+</div>
 
 {% endblock %}
