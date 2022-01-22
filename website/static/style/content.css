@@ -44,6 +44,7 @@
   background-color: var(--neutral-color);
   padding: 25px 50px;
   border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .btn {
@@ -69,6 +70,23 @@ form label {
 }
 
 /* Form */
+
+/* Home */
+.jumbotron {
+  height: 300px;
+  padding: 150px 0px;
+}
+
+.home-content {
+  margin-top: 150px;
+}
+
+.box-home {
+  background-color: var(--neutral-color);
+  padding: 25px 50px;
+  border-radius: 10px;
+}
+/* Home */
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .hide > div,
