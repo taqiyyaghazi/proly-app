@@ -17,6 +17,10 @@
   background-color: var(--primary-color);
 }
 
+.container-fluid {
+  min-height: 300px;
+}
+
 .text-primary {
   color: var(--primary-color);
 }
@@ -75,6 +79,7 @@ form label {
 .jumbotron {
   height: 300px;
   padding: 150px 0px;
+  margin-bottom: 150px;
 }
 
 .home-content {
