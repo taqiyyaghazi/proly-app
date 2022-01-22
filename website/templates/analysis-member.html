@@ -14,4 +14,142 @@ content %}
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="box-analysis">
+        <form method="post">
+          <div class="form-group">
+            <label for="url">Product URL</label>
+            <input
+              type="text"
+              class="form-control"
+              name="url"
+              placeholder="Masukkan URL Produkmu"
+              required="required"
+            />
+          </div>
+
+          <br />
+          <div class="form-group">
+            <label for="category">Product Category</label>
+
+            <div class="pilihan">
+              <div class="form-check form-check-inline">
+                <label for="elektronik">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="category"
+                    id="elektronik"
+                    value="elektronik"
+                    required
+                  />Electronic</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <label for="pakaian">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="category"
+                    id="pakaian"
+                    value="pakaian"
+                  />Fashion</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <label for="makanan">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="category"
+                    id="makanan"
+                    value="makanan"
+                  />Food</label
+                >
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="ecommerce">Product Ecommerce</label>
+            <div class="pilihan-ecom">
+              <div class="form-check form-check-inline">
+                <label for="shopee"
+                  ><input
+                    class="form-check-input"
+                    type="radio"
+                    name="ecommerce"
+                    id="shopee"
+                    value="shopee"
+                    required
+                  />Shopee</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <label for="tokopedia">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="ecommerce"
+                    id="tokopedia"
+                    value="tokopedia"
+                  />Tokopedia</label
+                >
+              </div>
+            </div>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-submit">
+            Analisis Sekarang
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+      <div class="row box-analysis">
+        <h5 class="fw-bolder text-center">Sentiment Result</h5>
+        <div class="sentiment d-flex justify-content-center">
+          <div style="width: 250px; height: 250px">
+            <canvas id="sentimentChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="row box-analysis">
+        <h5 class="fw-bolder text-center">Recomendation</h5>
+        <p class="text-center">
+          Beberapa hal yang bisa anda perbaiki dari sentimen negatif yang paling
+          sering diberikan di produk anda adalah sebagai berikut
+        </p>
+        <div class="container">
+          <ol>
+            <li>Barang buruk banget sih</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  var ctx = document.getElementById("sentimentChart").getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Negatif", "Positif"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [80, 20],
+          backgroundColor: ["rgb(255,106,61)", "rgb(157,170,242)"],
+        },
+      ],
+    },
+  });
+</script>
+
 {% endblock %}

@@ -16,7 +16,7 @@ content %}
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
       <div class="box-analysis">
         <form method="post">
           <div class="form-group">
@@ -35,9 +35,10 @@ content %}
             <label for="category">Product Category</label>
 
             <div class="pilihan">
-              <div>
+              <div class="form-check form-check-inline">
                 <label for="elektronik">
                   <input
+                    class="form-check-input"
                     type="radio"
                     name="category"
                     id="elektronik"
@@ -46,9 +47,10 @@ content %}
                   />Electronic</label
                 >
               </div>
-              <div>
+              <div class="form-check form-check-inline">
                 <label for="pakaian">
                   <input
+                    class="form-check-input"
                     type="radio"
                     name="category"
                     id="pakaian"
@@ -56,9 +58,10 @@ content %}
                   />Fashion</label
                 >
               </div>
-              <div>
+              <div class="form-check form-check-inline">
                 <label for="makanan">
                   <input
+                    class="form-check-input"
                     type="radio"
                     name="category"
                     id="makanan"
@@ -72,9 +75,10 @@ content %}
           <div class="form-group">
             <label for="ecommerce">Product Ecommerce</label>
             <div class="pilihan-ecom">
-              <div>
+              <div class="form-check form-check-inline">
                 <label for="shopee"
                   ><input
+                    class="form-check-input"
                     type="radio"
                     name="ecommerce"
                     id="shopee"
@@ -83,9 +87,10 @@ content %}
                   />Shopee</label
                 >
               </div>
-              <div>
+              <div class="form-check form-check-inline">
                 <label for="tokopedia">
                   <input
+                    class="form-check-input"
                     type="radio"
                     name="ecommerce"
                     id="tokopedia"
@@ -95,14 +100,67 @@ content %}
               </div>
             </div>
           </div>
+          <br />
           <button type="submit" class="btn btn-submit">
             Analisis Sekarang
           </button>
         </form>
       </div>
     </div>
-    <div class="col-md-6"></div>
+    <div class="col-md-1"></div>
+    <div class="col-md-6">
+      <div class="row box-analysis">
+        <h5 class="fw-bolder text-center">Sentiment Result</h5>
+        <div class="sentiment d-flex justify-content-center">
+          <div style="width: 250px; height: 250px">
+            <canvas id="sentimentChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="row box-analysis">
+        <h5 class="fw-bolder text-center">Recomendation</h5>
+        <p class="fw-bold text-center">Anda menggunakan pratinjau</p>
+        <p class="text-center">
+          Jadilah anggota Proly untuk mendapatkan rekomendasi
+        </p>
+        <div class="forMember d-flex justify-content-center">
+          <a
+            class="nav-item nav-link auth-btn text-center"
+            id="login"
+            href="/login"
+            >LOGIN</a
+          >
+          <br />
+          <p class="text-center">&nbsp; atau &nbsp;</p>
+          <br />
+          <a
+            class="nav-item nav-link auth-btn text-center"
+            id="signUp"
+            href="/sign-up"
+            >SIGN UP</a
+          >
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  var ctx = document.getElementById("sentimentChart").getContext("2d");
+  var myChart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Negatif", "Positif"],
+      datasets: [
+        {
+          label: "# of Votes",
+          data: [80, 20],
+          backgroundColor: ["rgb(255,106,61)", "rgb(157,170,242)"],
+        },
+      ],
+    },
+  });
+</script>
 {% endblock %}

@@ -90,21 +90,35 @@ form label {
 /* Home */
 
 /* Analysis */
-.btn-outline-primary {
-  background-color: var(--neutral-color);
-  color: var(--tertiary-color);
-  border: 2px solid var(--tertiary-color);
-}
-
-.btn-outline-primary:hover {
-  background-color: var(--tertiary-color);
-  color: var(--neutral-color);
-  border: 2px solid var(--tertiary-color);
-}
-
 input[type="radio"]:checked {
   background-color: var(--tertiary-color);
   color: var(--neutral-color);
+  border: 2px solid var(--tertiary-color);
+}
+
+.sentiment {
+  margin: 0px auto;
+}
+
+.forMember a {
+  text-decoration: none;
+  color: var(--neutral-color);
+}
+
+.forMember a:hover {
+  color: var(--tertiary-color);
+}
+
+.auth-btn {
+  background-color: var(--tertiary-color);
+  border-radius: 5px;
+  padding: 5px 0px;
+  border: 2px solid var(--tertiary-color);
+  width: 90px;
+}
+
+.auth-btn:hover {
+  background-color: var(--primary-color);
   border: 2px solid var(--tertiary-color);
 }
 /* Analysis */
