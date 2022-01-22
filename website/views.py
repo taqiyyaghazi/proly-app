@@ -24,4 +24,8 @@ def analysis():
 @views.route('analysis-member', methods=['GET', 'POST'])
 @login_required
 def analysisMember():
+    data = []
+    for i in request.form.values():
+        data.append(i)
+    print(data)
     return render_template('analysis-member.html', user=current_user) 
