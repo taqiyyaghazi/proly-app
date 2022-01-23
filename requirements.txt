@@ -2,3 +2,4 @@ Flask
 Flask_Login
 SQLAlchemy
 Werkzeug
+gunicorn
