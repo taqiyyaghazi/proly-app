@@ -6,3 +6,4 @@ gunicorn
 requests
 ordereddict
 pandas
+selenium
