@@ -7,3 +7,4 @@ requests
 ordereddict
 pandas
 selenium
+bs4
