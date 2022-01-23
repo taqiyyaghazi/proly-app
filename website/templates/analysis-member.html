@@ -121,15 +121,21 @@ content %}
       <br />
       <div class="row box-analysis">
         <h5 class="fw-bolder text-center">Recomendation</h5>
-        <p class="text-center">
+        {% if recommend != '' %}
+        <p class="text-justify">
           Beberapa hal yang bisa anda perbaiki dari sentimen negatif yang paling
           sering diberikan di produk anda adalah sebagai berikut
         </p>
         <div class="container">
           <ol>
-            <li>Barang buruk banget sih</li>
+            {% for sentence in recommend%}
+            <li>{{sentence}}</li>
+            {% endfor %}
           </ol>
         </div>
+        {% else %}
+        <p class="text-center">Belum ada hasil analisis</p>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -143,8 +149,8 @@ content %}
       labels: ["Negatif", "Positif"],
       datasets: [
         {
-          label: "# of Votes",
-          data: [80, 20],
+          label: "%",
+          data: {{ sentiment }},
           backgroundColor: ["rgb(255,106,61)", "rgb(157,170,242)"],
         },
       ],

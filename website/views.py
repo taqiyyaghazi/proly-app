@@ -48,8 +48,29 @@ def analysis():
 @views.route('analysis-member', methods=['GET', 'POST'])
 @login_required
 def analysisMember():
-    data = []
-    for i in request.form.values():
-        data.append(i)
-    print(data)
-    return render_template('analysis-member.html', user=current_user) 
+    if request.method == 'POST':
+        url, category, ecommerce = [x for x in request.form.values()]
+
+        if category == 'elektronik':
+            path = 'website/data/train/electronic_data.csv'
+        if category == 'makanan':
+            path = 'website/data/train/food_data.csv'
+        if category == 'pakaian':
+            path = 'website/data/train/fashion_data.csv'
+        
+
+        if ecommerce == 'shopee':
+            df = shopeeScraper(url)
+        if ecommerce == 'tokopedia':
+            df = tokopediaScraper(url)
+            pass
+        
+        
+        label_pos, label_neg, recommend = runApp(path, df)
+        total_label = label_pos + label_neg 
+        percent_pos = label_pos/total_label*100
+        percent_neg = label_neg/total_label*100
+    else:
+        percent_neg, percent_pos = 50, 50
+        recommend = ''
+    return render_template('analysis-member.html', user=current_user, sentiment=[percent_neg, percent_pos], recommend=recommend) 
