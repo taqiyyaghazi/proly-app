@@ -12,6 +12,7 @@ def login():
         password = request.form.get('password')
 
         user = User.query.filter_by(email=email).first()
+        print(user)
         if user:
             if check_password_hash(user.password, password):
                 flash('Anda berhasil masuk!', category='success')
@@ -39,6 +40,7 @@ def sign_up():
         password2 = request.form.get('password2')
 
         user = User.query.filter_by(email=email).first()
+        print(user)
         if user:
             flash('Email telah terdaftar', category='error')
         elif len(email) < 4:
@@ -53,7 +55,7 @@ def sign_up():
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
-            login_user(user, remember=True) #Mengingat pengguna yang masuk
+            # login_user(user, remember=True) #Mengingat pengguna yang masuk
             flash('Akun telah dibuat.', category='succes') #add user to database
             return redirect(url_for('views.home'))
     return render_template('sign_up.html', user='signUp')
