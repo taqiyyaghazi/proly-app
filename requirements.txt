@@ -3,3 +3,4 @@ Flask_Login
 flask-sqlalchemy
 Werkzeug
 gunicorn
+requests
