@@ -28,7 +28,7 @@ def shopeeScraper (url):
     offset = 0
     print('Scraping Process...')
     while True:    
-        data = requests.get(ratings_url.format(shop_id=shop_id, item_id=item_id, offset=offset)).json()
+        data = requests.get(ratings_url.format(shop_id=shop_id, item_id=item_id, offset=offset), timeout=60).json()
 
         i = 1
         try :
@@ -55,7 +55,7 @@ def tokopediaScraper(link):
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36")
 
-    driver = webdriver.Chrome(executable_path="chromedriver", options=chrome_options)
+    driver = webdriver.Chrome(executable_path="../chromedriver", options=chrome_options)
     driver.get(link)
 
     pageSource = driver.page_source
