@@ -55,7 +55,7 @@ def tokopediaScraper(link):
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36")
 
-    driver = webdriver.Chrome(executable_path="../chromedriver", options=chrome_options)
+    driver = webdriver.Chrome(executable_path="website/chromedriver", options=chrome_options)
     driver.get(link)
 
     pageSource = driver.page_source
@@ -160,6 +160,7 @@ def splitFeatures(df_model):
     y = df_model['label']
     return X, y
 
+
 def makeModel(X, y):
     model, vectorizer = trainingData(X, y)
     return model, vectorizer
@@ -220,7 +221,11 @@ def runApp(path, df):
     model, vectorizer = makeModel(X, y)
     df = predictData(df, model, vectorizer)
     pos, neg = countLabel(df)
-    df_negative = filterNegativeLabel(df)
-    cos_sim = cosineSimilarity(df_negative, vectorizer)
-    recommend = recommenderSystem(cos_sim, df_negative)
+    if neg > 0:
+        df_negative = filterNegativeLabel(df)
+        cos_sim = cosineSimilarity(df_negative, vectorizer)
+        recommend = recommenderSystem(cos_sim, df_negative)
+    else :
+        recommend = 'Produk anda sudah sangat baik karena tidak terdeteksi sentimen negatif'
+        print(recommend)
     return pos, neg, recommend

@@ -128,9 +128,11 @@ content %}
         </p>
         <div class="container">
           <ol>
-            {% for sentence in recommend%}
+            {% if sentiment[0] > 0 %} {% for sentence in recommend%}
             <li>{{sentence}}</li>
-            {% endfor %}
+            {% endfor %} {% else %}
+            <p class="text-center">{{ recommend }}</p>
+            {% endif %}
           </ol>
         </div>
         {% else %}
