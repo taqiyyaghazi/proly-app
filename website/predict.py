@@ -4,6 +4,7 @@ import pandas as pd
 import pickle
 import urllib3
 import time
+import timeit
 import json
 import warnings
 from selenium import webdriver
@@ -18,6 +19,15 @@ from sklearn.metrics import f1_score, log_loss, classification_report
 urllib3.disable_warnings()
 warnings.filterwarnings('ignore')
 
+
+
+
+
+#Your statements here
+
+
+
+
 def shopeeScraper (url):
     url = url
     r = re.search(r'i\.(\d+)\.(\d+)', url)
@@ -27,8 +37,10 @@ def shopeeScraper (url):
 
     offset = 0
     print('Scraping Process...')
-    while True:    
-        data = requests.get(ratings_url.format(shop_id=shop_id, item_id=item_id, offset=offset), timeout=60).json()
+    runtime = 0
+    while True:   
+        start = timeit.default_timer() 
+        data = requests.get(ratings_url.format(shop_id=shop_id, item_id=item_id, offset=offset)).json()
 
         i = 1
         try :
@@ -42,20 +54,24 @@ def shopeeScraper (url):
 
         if i % 20:
             break
-
+        stop = timeit.default_timer()
+        runtime += stop - start
+        print(runtime)
+        if runtime >= 28:
+            print(runtime)
+            break
         offset += 20
     print('Scraping Done.')
     df = pd.DataFrame(data_scrape, columns=['rating', 'reviews'])
     df = df.dropna(axis=0)
-    return df
-
+    return df, runtime
 # TO DO: Function Tokopedia Scraper
 def tokopediaScraper(link):
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36")
 
-    driver = webdriver.Chrome(executable_path="./website/chromedriver", options=chrome_options)
+    driver = webdriver.Chrome(executable_path="website/chromedriver", options=chrome_options)
     driver.get(link)
 
     pageSource = driver.page_source

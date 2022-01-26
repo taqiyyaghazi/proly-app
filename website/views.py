@@ -30,10 +30,13 @@ def analysis():
         
 
         if ecommerce == 'shopee':
-            df = shopeeScraper(url)
+            df, runtime = shopeeScraper(url)
         if ecommerce == 'tokopedia':
-            df = tokopediaScraper(url)
+            df, runtime = tokopediaScraper(url)
             pass
+
+        if runtime >= 28:
+            flash('Runtime melebihi 30s', category='error')
         
         
         label_pos, label_neg, recommend = runApp(path, df)
@@ -60,11 +63,13 @@ def analysisMember():
         
 
         if ecommerce == 'shopee':
-            df = shopeeScraper(url)
+            df, runtime = shopeeScraper(url)
         if ecommerce == 'tokopedia':
-            df = tokopediaScraper(url)
+            df, runtime = tokopediaScraper(url)
             pass
         
+        if runtime >= 28:
+            flash('Runtime melebihi 30s', category='error')
         
         label_pos, label_neg, recommend = runApp(path, df)
         total_label = label_pos + label_neg 
