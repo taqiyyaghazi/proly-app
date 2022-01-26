@@ -158,6 +158,10 @@ content %}
             <canvas id="sentimentChart"></canvas>
           </div>
         </div>
+        <div class="text-center mt-3">
+          <p>{{ neg }} sentimen negatif | {{ pos }} sentimen positif</p>
+          <p></p>
+        </div>
       </div>
       <br />
       <br />
@@ -191,7 +195,7 @@ content %}
   var myChart = new Chart(ctx, {
     type: "doughnut",
     data: {
-      labels: ["Negatif", "Positif"],
+      labels: ["% Negatif", "% Positif"],
       datasets: [
         {
           label: "%",

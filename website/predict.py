@@ -57,7 +57,7 @@ def shopeeScraper (url):
         stop = timeit.default_timer()
         runtime += stop - start
         print(runtime)
-        if runtime >= 28:
+        if runtime >= 29:
             print(runtime)
             break
         offset += 20

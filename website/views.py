@@ -68,14 +68,15 @@ def analysisMember():
             df, runtime = tokopediaScraper(url)
             pass
         
-        if runtime >= 28:
-            flash('Runtime melebihi 30s', category='error')
+        if runtime >= 29:
+            flash(str(len(df)) + ' ulasan berhasil dianalisis', category='succes')
         
         label_pos, label_neg, recommend = runApp(path, df)
         total_label = label_pos + label_neg 
         percent_pos = label_pos/total_label*100
         percent_neg = label_neg/total_label*100
     else:
+        label_pos, label_neg = 0, 0
         percent_neg, percent_pos = 50, 50
         recommend = ''
-    return render_template('analysis-member.html', user=current_user, sentiment=[percent_neg, percent_pos], recommend=recommend) 
+    return render_template('analysis-member.html', user=current_user, sentiment=[percent_neg, percent_pos], recommend=recommend, neg=label_neg, pos=label_pos) 
