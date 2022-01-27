@@ -15,6 +15,7 @@
 
 .content {
   background-color: var(--primary-color);
+  min-height: 800px;
 }
 
 .text-primary {
@@ -121,6 +122,10 @@ input[type="radio"]:checked {
 .auth-btn:hover {
   background-color: var(--primary-color);
   border: 2px solid var(--tertiary-color);
+}
+
+.spinner {
+  display: none;
 }
 /* Analysis */
 

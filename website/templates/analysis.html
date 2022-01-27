@@ -35,7 +35,7 @@ content %}
             Aplikasi ini sedang dalam pengembangan, sehingga hanya dapat mengunduh ulasan produk kurang dari 200 ulasan
           </div>
         </div>
-        <form method="post">
+        <form method="post" class="form-prevent">
           <div class="form-group">
             <label for="url">Product URL</label>
             <input
@@ -120,8 +120,9 @@ content %}
             </div>
           </div>
           <br />
-          <button type="submit" class="btn btn-submit">
-            Analisis Sekarang
+          <button type="submit" class="btn btn-submit button-prevent">
+            <div class="spinner"><i role="status" class="spinner-border spinner-border-sm"></i> Sedang Menganalisis </div>
+            <div class="hide-text">Analisis Sekarang</div> 
           </button>
         </form>
       </div>

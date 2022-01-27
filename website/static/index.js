@@ -6,3 +6,12 @@ function deleteMember(id) {
     window.location.href = "/admin";
   });
 }
+
+// jika form-prevent disubmit maka disable button-prevent dan tampilkan spinner
+(function () {
+  $(".form-prevent").on("submit", function () {
+    $(".button-prevent").attr("disabled", "true");
+    $(".spinner").show();
+    $(".hide-text").hide();
+  });
+})();
