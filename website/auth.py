@@ -12,10 +12,10 @@ def login():
         password = request.form.get('password')
 
         user = User.query.filter_by(email=email).first()
-        print(user)
+        print(user.first_name)
         if user:
             if check_password_hash(user.password, password):
-                flash('Anda berhasil masuk!', category='success')
+                flash('Hallo ' + str(user.first_name) +', Anda berhasil masuk!', category='success')
                 login_user(user, remember=True) #Mengingat pengguna yang masuk
                 return redirect(url_for('views.home'))
             else:

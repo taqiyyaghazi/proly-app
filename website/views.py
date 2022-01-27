@@ -10,9 +10,8 @@ views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
-    
 
-    return render_template('home.html', user=current_user) # Route Homepage
+    return render_template('home.html', user=current_user, username=current_user.first_name) # Route Homepage
 
 
 
@@ -30,7 +29,7 @@ def analysis():
         
 
         if ecommerce == 'shopee':
-            df, runtime = shopeeScraper(url)
+            df, runtime, product_name = shopeeScraper(url)
         if ecommerce == 'tokopedia':
             df, runtime = tokopediaScraper(url)
             pass
@@ -44,10 +43,11 @@ def analysis():
         percent_pos = label_pos/total_label*100
         percent_neg = label_neg/total_label*100
     else:
+        product_name = ''
         label_pos, label_neg = 0, 0
         percent_neg, percent_pos = 50, 50
 
-    return render_template('analysis.html', user=current_user, sentiment=[percent_neg, percent_pos], neg=label_neg, pos=label_pos) 
+    return render_template('analysis.html', user=current_user, sentiment=[percent_neg, percent_pos], neg=label_neg, pos=label_pos, product_name=product_name) 
 
 @views.route('analysis-member', methods=['GET', 'POST'])
 @login_required
@@ -64,7 +64,7 @@ def analysisMember():
         
 
         if ecommerce == 'shopee':
-            df, runtime = shopeeScraper(url)
+            df, runtime, product_name = shopeeScraper(url)
         if ecommerce == 'tokopedia':
             df, runtime = tokopediaScraper(url)
             pass
@@ -80,4 +80,5 @@ def analysisMember():
         label_pos, label_neg = 0, 0
         percent_neg, percent_pos = 50, 50
         recommend = ''
-    return render_template('analysis-member.html', user=current_user, sentiment=[percent_neg, percent_pos], recommend=recommend, neg=label_neg, pos=label_pos) 
+        product_name = ''
+    return render_template('analysis-member.html', user=current_user, username=current_user.first_name, sentiment=[percent_neg, percent_pos], recommend=recommend, neg=label_neg, pos=label_pos, product_name=product_name) 
