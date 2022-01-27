@@ -1,9 +1,11 @@
-from flask import Blueprint, render_template, request, Response
+from flask import Blueprint, render_template, request, Response, jsonify
 from flask.helpers import flash
 from flask_login import login_required, current_user
 from sqlalchemy.sql.functions import user
+from .models import User, db
 from . import db
 from website.predict import *
+import json
 
 
 views = Blueprint('views', __name__)
@@ -81,3 +83,23 @@ def analysisMember():
         recommend = ''
         product_name = ''
     return render_template('analysis-member.html', user=current_user, username=current_user.first_name, sentiment=[percent_neg, percent_pos], recommend=recommend, neg=label_neg, pos=label_pos, product_name=product_name) 
+
+@views.route('admin', methods=['GET', 'POST'])
+@login_required
+def admin():
+    user_database = User.query.all()
+
+    return render_template('admin.html', user=current_user, user_database=user_database)
+
+@views.route('/delete-member', methods=['POST'])
+def delete_member():
+    user = json.loads(request.data)
+    userId = user['id']
+    user = User.query.get(userId)
+    print(user)
+    if user:
+        if current_user.email == 'admin@gmail.com':
+            db.session.delete(user)
+            db.session.commit()
+
+    return jsonify({})

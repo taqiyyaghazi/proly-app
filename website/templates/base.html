@@ -47,7 +47,12 @@
             {% if user.is_authenticated %}
             <a class="nav-item nav-link ms-lg-3" id="analysis" href="/analysis-member">ANALYSIS</a>
             <a class="nav-item nav-link ms-lg-3 text-uppercase" href="/">HAI, {{ user.first_name }}</a>
+            {% if user.email == 'admin@gmail.com' %}
+            <a class="nav-item nav-link auth-btn ms-lg-3 text-center" id="admin" href="/admin">MEMBER</a>
             <a class="nav-item nav-link auth-btn ms-lg-3 text-center" id="logout" href="/logout">LOGOUT</a>
+            {% else %}
+            <a class="nav-item nav-link auth-btn ms-lg-3 text-center" id="logout" href="/logout">LOGOUT</a>
+            {% endif %}
             {% elif user == 'signUp' or user == 'login' %}
             <a class="nav-item nav-link ms-lg-3" id="analysis" href="/analysis">ANALYSIS</a>
             {% else %}

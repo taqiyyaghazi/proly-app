@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block title %}Login{% endblock %} {% block content
+%}
+<br />
+<div class="container">
+  <h1 class="fw-bolder text-center text-tertiary">DATA MEMBER</h1>
+  <div class="box-analysis table-responsive-sm">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in user_database %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-outline-danger"
+              onClick="deleteMember({{ user.id }})"
+            >
+              Hapus
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
