@@ -33,7 +33,7 @@ def analysis():
             df, runtime = tokopediaScraper(url)
             pass
 
-        if runtime >= 29:
+        if runtime >= 28:
             flash('Runtime melebihi 30s', category='error')
         
         
@@ -68,7 +68,7 @@ def analysisMember():
             df, runtime = tokopediaScraper(url)
             pass
         
-        if runtime >= 29:
+        if runtime >= 28:
             flash(str(len(df)) + ' ulasan berhasil dianalisis', category='succes')
         
         label_pos, label_neg, recommend = runApp(path, df)
