@@ -128,3 +128,36 @@ def delete_member():
 
     return jsonify({})
 
+@views.route('/form-update/<int:id>')
+def updateForm(id):
+    user_update = User.query.filter_by(id=id).first()
+    print(user_update)
+    return render_template("form-update.html", user=current_user, data=user_update)
+
+@views.route('/form-update', methods=['POST'])
+def update():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        first_name = request.form.get('firstName')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
+
+        user = User.query.filter_by(email=email).first()
+        if len(email) < 4:
+            flash('Email must be greater than 3 characters.', category='error')
+        elif len(first_name) < 2:
+            flash('First name must be greater than 1 character.', category='error')
+        elif password1 != password2:
+            flash('Passwords don\'t match.', category='error')
+        elif len(password1) < 7:
+            flash('Password must be at least 7 characters.', category='error')
+        else:
+            try:
+                print(user)
+                user.first_name = first_name
+                user.email = email
+                user.password = generate_password_hash(password1, method='sha256')
+                db.session.commit()
+            except Exception as e:
+                flash('Gagal Mengupdate Data', category='error')
+        return redirect("/admin")
