@@ -128,11 +128,3 @@ def delete_member():
 
     return jsonify({})
 
-@views.route('/edit-member', methods=['POST'])
-def edit_member():
-    user = json.loads(request.data)
-    userId = user['id']
-    user = User.query.get(userId)
-    data = {''}
-
-    return render_template('admin.html', user=current_user)

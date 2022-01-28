@@ -7,13 +7,6 @@ function deleteMember(id) {
   });
 }
 
-function editMember(id) {
-  fetch("/edit-member", {
-    method: "POST",
-    body: JSON.stringify({ id: id }),
-  });
-}
-
 // jika form-prevent disubmit maka disable button-prevent dan tampilkan spinner
 (function () {
   $(".form-prevent").on("submit", function () {
