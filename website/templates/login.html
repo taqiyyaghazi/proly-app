@@ -22,7 +22,7 @@
       <div class="container">
         <div class="container-form">
           <div class="box-form">
-            <form method="POST">
+            <form method="POST" class="form-prevent">
               <h3 align="center" class="fw-bolder">Login</h3>
               <div class="form-group">
                 <label for="email">Email Address</label>
@@ -46,8 +46,15 @@
                 />
               </div>
               <br />
-              <button type="submit" class="btn btn-submit mx-auto">
-                Login
+              <button
+                type="submit"
+                class="btn btn-submit mx-auto button-prevent"
+              >
+                <div class="spinner">
+                  <i role="status" class="spinner-border spinner-border-sm"></i>
+                  Loading
+                </div>
+                <div class="hide-text">LOGIN</div>
               </button>
               <br />
               <br />

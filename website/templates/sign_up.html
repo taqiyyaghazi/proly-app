@@ -22,7 +22,7 @@ content %}
       <div class="container">
         <div class="container-form">
           <div class="box-form">
-            <form method="POST">
+            <form method="POST" class="form-prevent">
               <h3 align="center" class="fw-bolder">Sign Up</h3>
               <div class="form-group">
                 <label for="email">Email Address</label>
@@ -66,9 +66,22 @@ content %}
                   name="password2"
                   placeholder="Enter Password Confirm"
                 />
+                <br />
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  onclick="showPassword('password1', 'password2')"
+                />&nbsp;Show Password
               </div>
+
               <br />
-              <button type="submit" class="btn btn-submit">SIGN UP</button>
+              <button type="submit" class="btn btn-submit button-prevent">
+                <div class="spinner">
+                  <i role="status" class="spinner-border spinner-border-sm"></i>
+                  Loading
+                </div>
+                <div class="hide-text">SIGN UP</div>
+              </button>
               <br />
               <br />
               <p class="text-center">
