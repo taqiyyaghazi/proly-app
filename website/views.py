@@ -121,10 +121,18 @@ def delete_member():
     user = json.loads(request.data)
     userId = user['id']
     user = User.query.get(userId)
-    print(user)
     if user:
         if current_user.email == 'admin@gmail.com':
             db.session.delete(user)
             db.session.commit()
 
     return jsonify({})
+
+@views.route('/edit-member', methods=['POST'])
+def edit_member():
+    user = json.loads(request.data)
+    userId = user['id']
+    user = User.query.get(userId)
+    data = {''}
+
+    return render_template('admin.html', user=current_user)

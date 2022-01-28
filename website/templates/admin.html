@@ -27,6 +27,13 @@ content %}
             >
               Hapus
             </button>
+            <button
+              type="button"
+              class="btn btn-outline-warning"
+              onClick="editMember({{ user.id }})"
+            >
+              Edit
+            </button>
           </td>
         </tr>
         {% endfor %}
@@ -35,8 +42,8 @@ content %}
   </div>
   <br />
   <div class="box-form">
-    <form method="POST">
-      <h3 align="center" class="fw-bolder">Tambah User</h3>
+    <form method="POST" class="form-prevent">
+      <h3 align="center" class="fw-bolder">TAMBAH USER</h3>
       <div class="form-group">
         <label for="email">Email Address</label>
         <input
@@ -87,7 +94,13 @@ content %}
         />&nbsp;Show Password
       </div>
       <br />
-      <button type="submit" class="btn btn-submit">TAMBAH</button>
+      <button type="submit" class="btn btn-submit button-prevent">
+        <div class="spinner">
+          <i role="status" class="spinner-border spinner-border-sm"></i>
+          Loading
+        </div>
+        <div class="hide-text">TAMBAH</div>
+      </button>
     </form>
   </div>
 </div>
