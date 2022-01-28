@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% block title %}Login{% endblock %} {% block content
-%}
+{% extends 'base.html' %} {% block title %}Data Member{% endblock %} {% block
+content %}
 <br />
 <div class="container">
   <h1 class="fw-bolder text-center text-tertiary">DATA MEMBER</h1>
@@ -32,6 +32,63 @@
         {% endfor %}
       </tbody>
     </table>
+  </div>
+  <br />
+  <div class="box-form">
+    <form method="POST">
+      <h3 align="center" class="fw-bolder">Tambah User</h3>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          placeholder="Enter Email"
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstName"
+          name="firstName"
+          placeholder="Enter First Name"
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label for="password1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password1"
+          name="password1"
+          placeholder="Enter Password"
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label for="password2">Password (Confirm)</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password2"
+          name="password2"
+          placeholder="Enter Password Confirm"
+        />
+        <br />
+        <input
+          class="form-check-input"
+          type="checkbox"
+          onclick="showPassword('password1', 'password2')"
+        />&nbsp;Show Password
+      </div>
+      <br />
+      <button type="submit" class="btn btn-submit">TAMBAH</button>
+    </form>
   </div>
 </div>
 
