@@ -1,8 +1,10 @@
 {% extends 'base.html' %} {% block title %}Data Member{% endblock %} {% block
 content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <br />
 <div class="container">
   <h1 class="fw-bolder text-center text-tertiary">DATA MEMBER</h1>
+
   <div class="box-analysis table-responsive-sm">
     <table class="table table-striped">
       <thead>
@@ -117,6 +119,53 @@ content %}
       </button>
     </form>
   </div>
+
+  <br />
+
+  <div class="box-form">
+    <h3 align="center" class="fw-bolder">VISITS IN LAST 7 DAYS</h3>
+    <canvas id="myChart"></canvas>
+  </div>
 </div>
 
+<script>
+
+  const labels = ['{{tgl[-7]}}', '{{tgl[-6]}}', '{{tgl[-5]}}', '{{tgl[-4]}}', '{{tgl[-3]}}', '{{tgl[-2]}}', '{{tgl[-1]}}'];
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Number of Visits per Day",
+        backgroundColor: "rgb(255,106,61, 0.2)",
+        borderColor: "rgb(255,106,61)",
+        data: [{{visits[-7]}}, {{visits[-6]}}, {{visits[-5]}}, {{visits[-4]}}, {{visits[-3]}}, {{visits[-2]}}, {{visits[-1]}}],
+        tension: 0.1
+      },
+    ],
+  };
+
+  const config = {
+    type: "line",
+    data: data,
+    options: {scales: {
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Date'
+        }
+      }],
+      yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Visits'
+          },
+          ticks: {
+              beginAtZero: true
+          }
+      }]
+  }},
+  };
+
+  var myChart = new Chart(document.getElementById("myChart"), config);
+</script>
 {% endblock %}

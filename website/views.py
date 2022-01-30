@@ -3,10 +3,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask.helpers import flash
 from flask_login import login_required, current_user
 from sqlalchemy.sql.functions import user
-from .models import User, db
+from sqlalchemy import func
+from .models import User, Visit, db
 from . import db
 from website.predict import *
 import json
+from datetime import datetime
 
 
 views = Blueprint('views', __name__)
@@ -55,6 +57,9 @@ def analysis():
 @login_required
 def analysisMember():
     if request.method == 'POST':
+        new_visit = Visit(user_id=current_user.id, event_name='Analysis Member', date_event=datetime.today().date())
+        db.session.add(new_visit)
+        db.session.commit()
         url, category, ecommerce = [x for x in request.form.values()]
 
         if category == 'elektronik':
@@ -89,7 +94,12 @@ def analysisMember():
 @login_required
 def admin():
     user_database = User.query.all()
-    if current_user.role == 'Admin':
+    visit_database = Visit.query.with_entities(Visit.date_event, func.count(Visit.date_event)).group_by(Visit.date_event).all()[-7:]
+    tgl, visits = [], []
+    for i in range (len(visit_database)):
+        tgl.append(str(visit_database[i][0]).replace('-', ' '))
+        visits.append(visit_database[i][1])
+    if current_user.email == 'admin@gmail.com':
         if request.method == 'POST':
             email = request.form.get('email')
             first_name = request.form.get('firstName')
@@ -118,7 +128,7 @@ def admin():
     else:
         return redirect(url_for('views.home'))
 
-    return render_template('admin.html', user=current_user, user_database=user_database)
+    return render_template('admin.html', user=current_user, user_database=user_database, visits=visits, tgl=tgl)
 
 @views.route('/delete-member', methods=['POST'])
 def delete_member():

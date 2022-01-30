@@ -62,7 +62,7 @@ def shopeeScraper (url):
             break
         offset += 20
     print('Scraping Done.')
-    product_name = data['data']['ratings'][0]['product_items'][0]['name']
+    product_name = 'Product Name' #data['data']['ratings'][0]['product_items'][0]['name']
     df = pd.DataFrame(data_scrape, columns=['rating', 'reviews'])
     df = df.dropna(axis=0)
     return df, runtime, product_name
