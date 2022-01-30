@@ -10,6 +10,7 @@ content %}
           <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">E-mail</th>
+          <th scope="col">Role</th>
           <th scope="col">Aksi</th>
         </tr>
       </thead>
@@ -19,6 +20,7 @@ content %}
           <td>{{ user.id }}</td>
           <td>{{ user.first_name }}</td>
           <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
           <td>
             <a
               type="button"
@@ -64,6 +66,17 @@ content %}
           id="firstName"
           name="firstName"
           placeholder="Enter First Name"
+        />
+      </div>
+      <br />
+      <div class="form-group">
+        <label for="role">Role</label>
+        <input
+          type="text"
+          class="form-control"
+          id="role"
+          name="role"
+          placeholder="Enter Role"
         />
       </div>
       <br />
